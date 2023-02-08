@@ -1,0 +1,102 @@
+<ng-container *ngrxLet="ticketList$ as tickets">
+
+  <div class="card">
+
+    <div class="card-header">
+      <h2 class="card-title">Ticket Search</h2>
+    </div>
+    <div class="card-body">
+
+      <form>
+        <div class="form-group">
+          <label>Booking ID:</label>
+          <input [(ngModel)]="bookingId" name="bookingId" type="number" class="form-control" />
+        </div>
+
+        <div class="form-group">
+          <label>Flight ID:</label>
+          <input [(ngModel)]="flightId" name="flightId" type="number" class="form-control" />
+        </div>
+
+        <div class="form-group">
+          <label>Passenger ID:</label>
+          <input [(ngModel)]="passengerId" name="passengerId" type="number" class="form-control" />
+        </div>
+
+        <div class="form-group">
+          <button (click)="search()"
+            class="btn btn-default">
+            Search
+          </button>
+
+          <div *ngIf="tickets">
+            {{ tickets.length }} tickets found!
+          </div>
+
+        </div>
+      </form>
+
+    </div>
+  </div>
+
+  <div class="card">
+
+    <table class="table table-condensed" *ngIf="tickets.length">
+        <thead>
+            <tr>
+                <th>Booking ID</th>
+                <th>Flight ID</th>
+                <th>Passenger ID</th>
+                <th>Date</th>
+                <th>Class</th>
+                <th>Seat</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr
+              *ngFor="let ticket of tickets"
+              [class.table-active]="ticket === selectedTicket">
+              <td>
+                <span class="badge badge-pill badge-success">
+                  {{ ticket.id }}
+                </span>
+              </td>
+              <td>
+                <a
+                  [routerLink]="['../../flight/edit', ticket.flightId]"
+                  class="badge badge-pill badge-info">
+                  {{ ticket.flightId }}
+                </a>
+              </td>
+              <td>
+                <a
+                  [routerLink]="['../../passenger/edit', ticket.passengerId]"
+                  class="badge badge-pill badge-danger">
+                  {{ ticket.passengerId }}
+                </a>
+              </td>
+              <td>{{ ticket.bookingDate | date:'dd.MM.yyyy HH:mm' }}</td>
+              <td>{{ ticket.flightClass }}</td>
+              <td>{{ ticket.seat }}</td>
+              <td>
+                <button
+                  (click)="toggleSelection(ticket)"
+                  class="btn btn-info btn-sm"
+                  style="min-width: 85px; margin-right: 5px">
+                  {{ ticket === selectedTicket ? 'Remove' : 'Select' }}
+                </button>
+                <a
+                  [routerLink]="['../edit', ticket.id]"
+                  class="btn btn-success btn-sm"
+                  style="min-width: 85px">
+                  Edit
+                </a>
+              </td>
+            </tr>
+        <tbody>
+    </table>
+
+  </div>
+
+</ng-container>

@@ -1,0 +1,98 @@
+<div class="card">
+  <div class="card-header">
+    <h2 class="card-title">Flight Search</h2>
+  </div>
+
+  <div class="card-body">
+    <form #form="ngForm">
+      <div class="form-group">
+        <label>From:</label>
+        <input [(ngModel)]="from" name="from" class="form-control" required />
+      </div>
+      <div class="form-group">
+        <label>To:</label>
+        <input [(ngModel)]="to" name="to" class="form-control" />
+      </div>
+      <div class="form-group">
+        <label>
+          <input [(ngModel)]="urgent" name="urgent" type="checkbox" />
+          Urgent (When it's urgent it fails -- like in real life ;-))
+        </label>
+      </div>
+
+      <div class="form-group" *ngIf="flights">
+        <button
+          (click)="search()"
+          [disabled]="!from || !to"
+          class="btn btn-default"
+        >
+          Search
+        </button>
+
+        <button
+          *ngIf="flights.length"
+          class="btn btn-default"
+          (click)="delay()"
+        >
+          Delay 1st Flight
+        </button>
+
+        <div>{{ flights.length }} flights found!</div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="card" *ngIf="flights.length">
+  <table class="table table-condensed">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>From</th>
+        <th>To</th>
+        <th>Date</th>
+        <th>Delayed</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="let flight of flights"
+        [class.table-active]="selectedFlight === flight"
+      >
+        <td>
+          <span class="badge badge-pill badge-info">
+            {{ flight.id }}
+          </span>
+        </td>
+        <td>{{ flight.from }}</td>
+        <td>{{ flight.to }}</td>
+        <td>{{ flight.date | date : "dd.MM.yyyy HH:mm" }}</td>
+        <td>{{ flight.delayed }}</td>
+        <td>
+          <button
+            (click)="select(flight)"
+            class="btn btn-info btn-sm"
+            style="min-width: 85px; margin-right: 5px"
+          >
+            Select
+          </button>
+          <a
+            [routerLink]="['../edit', flight.id]"
+            class="btn btn-success btn-sm"
+            style="min-width: 85px; margin-right: 5px"
+          >
+            Edit
+          </a>
+          <a
+            [routerLink]="['../../ticket/search', { flightId: flight.id }]"
+            class="btn btn-warning btn-sm"
+            style="min-width: 85px"
+          >
+            Bookings
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

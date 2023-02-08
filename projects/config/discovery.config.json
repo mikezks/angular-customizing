@@ -1,0 +1,22 @@
+{
+  "mfe-ticket": {
+    "type": "module",
+    "remoteEntry": "http://localhost:4810/remoteEntry.js",
+    "exposedModule": "./routes"
+  },
+  "feature-flight-search": {
+    "type": "module",
+    "remoteEntry": "http://localhost:4820/remoteEntry.js",
+    "exposedModule": "./component"
+  },
+  "service-flight": {
+    "type": "module",
+    "remoteEntry": "http://localhost:4830/remoteEntry.js",
+    "exposedModule": "./service"
+  },
+  "fn-validate-passenger-status": {
+    "type": "module",
+    "remoteEntry": "http://localhost:4840/remoteEntry.js",
+    "exposedModule": "./fn"
+  }
+}

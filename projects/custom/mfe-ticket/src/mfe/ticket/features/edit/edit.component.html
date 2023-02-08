@@ -1,0 +1,46 @@
+<div class="card">
+  <div class="card-header">
+    <h2 class="card-title">Ticket Edit</h2>
+  </div>
+
+  <div class="card-body">
+
+    <form [formGroup]="editForm">
+      <div class="form-group">
+        <label>ID:</label>
+        <input formControlName="id" type="number" class="form-control" />
+      </div>
+      <div class="form-group">
+        <label>Passenger ID:</label>
+        <input formControlName="passengerId" type="number" class="form-control" />
+      </div>
+      <div class="form-group">
+        <label>Flight ID:</label>
+        <input formControlName="flightId" type="number" class="form-control" />
+      </div>
+      <div class="form-group">
+        <label>Booking Date:</label>
+        <input formControlName="bookingDate" class="form-control" />
+      </div>
+      <div class="form-group">
+        <label>Flight Class:</label>
+        <input formControlName="flightClass" type="number" class="form-control" />
+      </div>
+      <div class="form-group">
+        <label>Seat:</label>
+        <input formControlName="seat" class="form-control" />
+      </div>
+
+      <div class="form-group">
+        <button
+          (click)="save()"
+          [disabled]="!editForm.valid"
+          class="btn btn-default"
+        >
+          Save
+        </button>
+      </div>
+    </form>
+
+  </div>
+</div>

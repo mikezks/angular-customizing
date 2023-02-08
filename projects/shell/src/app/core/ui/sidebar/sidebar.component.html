@@ -1,0 +1,49 @@
+<div class="sidebar-wrapper" style="padding-bottom: 0">
+  <div class="logo">
+    <a href="http://angulararchitects.io" class="simple-text logo-mini">
+      <div class="logo-image-small">
+        <img src="assets/paper-design/angular2-logo.png" />
+      </div>
+    </a>
+    <a href="http://angulararchitects.io" class="simple-text logo-normal">
+      Flights 42
+    </a>
+  </div>
+  <ul class="nav">
+    <li routerLinkActive="active">
+      <a routerLink="/home">
+        <i class="nc-icon nc-bank"></i>
+        <p>Home</p>
+      </a>
+    </li>
+
+    <li routerLinkActive="active">
+      <a routerLink="/booking/flight">
+        <i class="nc-icon nc-send"></i>
+        <p>Flights</p>
+      </a>
+    </li>
+
+    <li routerLinkActive="active">
+      <a routerLink="/booking/passenger">
+        <i class="nc-icon nc-single-02"></i>
+        <p>Passengers</p>
+      </a>
+    </li>
+
+    <li routerLinkActive="active">
+      <a routerLink="/booking/ticket">
+        <i class="nc-icon nc-tag-content"></i>
+        <p>Tickets</p>
+      </a>
+    </li>
+  </ul>
+
+  <app-dyn-ui-widget
+    *ngFor="let widget of connect.state$ | ngrxPush"
+    [title]="widget.title"
+    [config]="widget.toggles"
+    (toggle)="connect.toggle($event)"
+  />
+
+</div>

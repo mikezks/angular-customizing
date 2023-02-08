@@ -1,0 +1,40 @@
+{
+  "routes": {
+    "booking": {
+      "ticket": {
+        "type": "routes",
+        "source": ["mfe-ticket"],
+        "active": false
+      }
+    },
+    "booking/flight": {
+      "search": {
+        "type": "component",
+        "source": ["feature-flight-search"],
+        "active": false
+      },
+      "edit": {
+        "type": "card",
+        "source": ["Flight Edit", "<h3>🤨</h3>"],
+        "active": false
+      }
+    },
+    "booking/passenger": {
+      "search": {
+        "type": "card",
+        "source": ["Passenger Search", "<h3>😉</h3>"],
+        "active": false
+      }
+    }
+  },
+  "services": {
+    "service-flight": {
+      "active": false
+    }
+  },
+  "functions": {
+    "fn-validate-passenger-status": {
+      "active": false
+    }
+  }
+}

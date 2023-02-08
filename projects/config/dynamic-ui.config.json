@@ -1,0 +1,50 @@
+[
+  {
+    "title": "MFE Config",
+    "type": "routes",
+    "toggles": [
+      {
+        "key": "booking.ticket",
+        "label": "Ticket"
+      }
+    ]
+  },
+  {
+    "title": "Feature Config",
+    "type": "routes",
+    "toggles": [
+      {
+        "key": "booking/flight.search",
+        "label": "FL Search"
+      },
+      {
+        "key": "booking/flight.edit",
+        "label": "FL Edit"
+      },
+      {
+        "key": "booking/passenger.search",
+        "label": "PA Search"
+      }
+    ]
+  },
+  {
+    "title": "Service Config",
+    "type": "services",
+    "toggles": [
+      {
+        "key": "service-flight",
+        "label": "Flight"
+      }
+    ]
+  },
+  {
+    "title": "Function Config",
+    "type": "functions",
+    "toggles": [
+      {
+        "key": "fn-validate-passenger-status",
+        "label": "Validator"
+      }
+    ]
+  }
+]
